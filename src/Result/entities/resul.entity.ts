@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import { Player } from '../player/entities/payer.entity';
-import { Tournament } from '../Tournament/tournament.entity';
+import { Player } from '../../player/entities/payer.entity';
+import { Tournament } from '../../Tournament/entities/tournament.entity';
 
 @Entity()
 export class MatchResult {

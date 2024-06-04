@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
-import { MatchResult } from '../../Result/resul.entity';
+import { MatchResult } from '../../Result/entities/resul.entity';
 
 @Entity()
 export class Player {
