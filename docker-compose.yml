@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:13-alpine
+    container_name: torneos
+    restart: always
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: cristian
+      POSTGRES_PASSWORD: cristian123
+    volumes:
+      - /var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: cristian@nestjs.com
+      PGADMIN_DEFAULT_PASSWORD: cristian123
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - 8080:80
+    volumes:
+      - /var/lib/pgadmin
+    depends_on:
+      - db
