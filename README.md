@@ -9,6 +9,18 @@
 ## Installation
 
 ```bash
+1. Clone the repository:
+
+git clone https://github.com/cristianManco/test-Back-end
+```
+
+2. Install the dependencies:
+
+```bash
+cd your-repository
+npm install
+```
+
 $ yarn install
 ```
 
@@ -60,18 +72,56 @@ Torneos Van Rossum is a platform dedicated to managing esports tournaments in Co
 
 ## Getting Started
 
-1. Clone the repository:
 
-```bash
-git clone https://github.com/your-repository.git
+## Project Structure
+```
+src/
+|-- global/
+|   |--config.ts              # Configuration file for database and other settings
+|   |--Guard/                 # guard configuration for sales
+|
+|-- player/
+|   |-- entities/             # Author entity definition
+|   |-- dto/                  # DTOs (Data Transfer Objects) for author operations
+|   |-- controller/           # Controller for author operations
+|   |-- module/               # Module for author-related functionalities
+|   |--  service              # Service for author operations
+|
+|-- result/
+|   |-- dto/                  # DTOs for book operations
+|   |-- entities/             # Book entity definition
+|   |-- controller/           # Controller for book operations
+|   |-- module/               # Module for book-related functionalities
+|   |-- service               # Service for book operations
+|
+|-- tournament/
+|   |-- dto/                  # DTOs for sales operations
+|   |-- entities/             # Sale entity definition
+|   |-- controller/           # Controller for sales operations
+|   |-- module/               # Module for sale-related functionalities
+|   |--  service              # Service for sale operations
+|
+|-- app.module.ts             # Main application module
+|-- main.ts                   # Application entry point
+|-- ...                       # Other files and folders
 ```
 
-2. Install the dependencies:
+## Contribution
+To contribute to this project, follow these steps:
+1. Fork this repository.
+2. Create a new branch with the prefix `feature/`or  `feat/` followed by your feature name.
+3. Make your changes and tests.
+4. Make a pull request to the `develop` branch of this repository.
 
-```bash
-cd your-repository
-npm install
-```
+
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+---
+
+For any questions or issues, Cristian Manco at camilomanco2005@gmail.com Thank you for using our API!
+
 
 3. Set up your database and add the connection details to a `.env` file in the root of your project:
 
@@ -105,6 +155,8 @@ The API is documented using Swagger and is available at `http://localhost:3000/a
 ## Gitflow
 
 We use Gitflow for branch management and versioning. Please ensure that your commits are descriptive and that your branches follow the Gitflow convention.
+
+
 
 ## Contributing
 
