@@ -1,14 +1,14 @@
 import { Controller, Get, Post, Put, Delete, Param, Body, UseGuards, Query } from '@nestjs/common';
 import { TournamentsService } from '../service/tournament.service';
 import { CreateTournamentDto, UpdateTournamentDto } from '../dtos/exportDto';
-// import { ApiKeyGuard } from './guards/api-key.guard';
+import { ApiKeyGuard } from '../../Global/GUard/x-Api-Key.guard';
 
 @Controller('tournaments')
 export class TournamentsController {
   constructor(private readonly tournamentsService: TournamentsService) {}
 
   @Post()
-//   @UseGuards(ApiKeyGuard)
+  @UseGuards(ApiKeyGuard)
   create(@Body() createTournamentDto: CreateTournamentDto) {
     return this.tournamentsService.create(createTournamentDto);
   }
@@ -24,25 +24,25 @@ export class TournamentsController {
   }
 
   @Put(':id')
-//   @UseGuards(ApiKeyGuard)
+  @UseGuards(ApiKeyGuard)
   update(@Param('id') id: string, @Body() updateTournamentDto: UpdateTournamentDto) {
     return this.tournamentsService.update(+id, updateTournamentDto);
   }
 
   @Delete(':id')
-//   @UseGuards(ApiKeyGuard)
+  @UseGuards(ApiKeyGuard)
   remove(@Param('id') id: string) {
     return this.tournamentsService.remove(+id);
   }
 
   @Post(':id/participants')
-//   @UseGuards(ApiKeyGuard)
+  @UseGuards(ApiKeyGuard)
   addParticipants(@Param('id') id: string, @Body('playerIds') playerIds: number[]) {
     return this.tournamentsService.addParticipants(+id, playerIds);
   }
 
   @Post(':id/generate-matchups')
-//   @UseGuards(ApiKeyGuard)
+  @UseGuards(ApiKeyGuard)
   generateMatchups(@Param('id') id: string) {
     return this.tournamentsService.generateMatchups(+id);
   }
