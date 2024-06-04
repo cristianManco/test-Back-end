@@ -1,6 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import config from './Global/config/config';
+import { PlayerModule } from './player/module/player.module';
+import { ResultModule } from './Result/module/result.module';
+import { TournamentModule } from './Tournament/module/tournament.module';
 
 
 @Module({
@@ -15,6 +18,9 @@ import config from './Global/config/config';
       autoLoadEntities: true,
       synchronize: true,      
     }),
+    PlayerModule,
+    ResultModule,
+    TournamentModule,
   ],
   controllers: [],
   providers: [],
