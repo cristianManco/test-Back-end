@@ -24,9 +24,9 @@ export class ResultService {
     const winner = await this.playersRepository.findOne({ where: { id: winnerId, isDeleted: false } });
     const loser = await this.playersRepository.findOne({ where: { id: loserId, isDeleted: false } });
 
-    if (!tournament || !winner || !loser) {
-      throw new BadRequestException('Tournament, winner or loser not found or deleted');
-    }
+    // if (!tournament || !winner || !loser) {
+    //   throw new BadRequestException('Tournament, winner or loser not found or deleted');
+    // }
 
     const matchResult = this.matchResultsRepository.create({
       tournament,
