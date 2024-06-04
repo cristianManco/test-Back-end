@@ -2,18 +2,21 @@ import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateCol
 import { MatchResult } from '../../Result/entities/resul.entity';
 
 @Entity()
-export class Player {
+export class Tournament {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
   name: string;
 
-  @Column({ unique: true })
-  email: string;
+  @Column()
+  startDate: Date;
 
-  @Column({ nullable: true })
-  stats: string;
+  @Column()
+  endDate: Date;
+
+  @Column()
+  status: string;
 
   @Column({ default: false })
   isDeleted: boolean;
@@ -24,9 +27,7 @@ export class Player {
   @UpdateDateColumn()
   updatedAt: Date;
 
-  @OneToMany(() => MatchResult, matchResult => matchResult.winner)
-  matchesWon: MatchResult[];
-
-  @OneToMany(() => MatchResult, matchResult => matchResult.loser)
-  matchesLost: MatchResult[];
+  @OneToMany(() => MatchResult, matchResult => matchResult.tournament)
+  matchResults: MatchResult[];
+    players: import("c:/Users/CAMILO/OneDrive/Escritorio/Backend-Nestjs/api-torneos/src/player/entities/payer.entity").Player[];
 }
