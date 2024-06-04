@@ -29,4 +29,5 @@ export class Tournament {
 
   @OneToMany(() => MatchResult, matchResult => matchResult.tournament)
   matchResults: MatchResult[];
+    players: import("c:/Users/CAMILO/OneDrive/Escritorio/Backend-Nestjs/api-torneos/src/player/entities/payer.entity").Player[];
 }
