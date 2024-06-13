@@ -75,14 +75,14 @@ export class TournamentsService {
   async generateMatchups(tournamentId: number): Promise<void> {
     const tournament = await this.findOne(tournamentId);
     const players = tournament.players;
-
+  
     if (players.length < 2) {
       throw new BadRequestException('Not enough players to generate matchups');
     }
-
+  
     // Clear existing match results for this tournament
     await this.matchResultsRepository.delete({ tournament });
-
+  
     // Generate random matchups
     const shuffledPlayers = players.sort(() => 0.5 - Math.random());
     for (let i = 0; i < shuffledPlayers.length - 1; i += 2) {
@@ -96,6 +96,7 @@ export class TournamentsService {
       await this.matchResultsRepository.save(matchResult);
     }
   }
+  
 
   async registerMatchResult(tournamentId: number, matchId: number, winnerId: number, loserId: number, winnerScore: number, loserScore: number): Promise<MatchResult> {
     const matchResult = await this.matchResultsRepository.findOne({ where: { id: matchId, tournament: { id: tournamentId }, isDeleted: false } });
