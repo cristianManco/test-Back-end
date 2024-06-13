@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 import { MatchResult } from '../../Result/entities/resul.entity';
+import { PlayerPrize } from 'src/prize/entities/playerPrize.entity';
 
 @Entity()
 export class Player {
@@ -29,4 +30,7 @@ export class Player {
 
   @OneToMany(() => MatchResult, matchResult => matchResult.loser)
   matchesLost: MatchResult[];
+
+  @OneToMany(() => PlayerPrize, (playerPrize) => playerPrize.player)
+  prizes: PlayerPrize[];
 }

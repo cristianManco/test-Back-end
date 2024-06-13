@@ -4,10 +4,18 @@ import config from './Global/config/config';
 import { PlayerModule } from './player/module/player.module';
 import { ResultModule } from './Result/module/result.module';
 import { TournamentModule } from './Tournament/module/tournament.module';
+import { ConfigModule } from '@nestjs/config';
+import { PrizesModule } from './prize/module/prize.module';
+import { ScheduleModule } from '@nestjs/schedule';
+
 
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: '.env',
+      isGlobal: true,
+    }),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: config().database.host,
@@ -16,11 +24,17 @@ import { TournamentModule } from './Tournament/module/tournament.module';
       password: config().database.password,
       database: config().database.db,
       autoLoadEntities: true,
-      synchronize: true,      
+      synchronize: true, 
+      extra: {
+        ssl: true, 
+      },
+     
     }),
+    ScheduleModule.forRoot(),
     PlayerModule,
     ResultModule,
     TournamentModule,
+    PrizesModule,
   ],
   controllers: [],
   providers: [],
